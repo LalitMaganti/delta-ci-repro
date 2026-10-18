@@ -741,7 +741,7 @@ dependencies = [
  "sysinfo",
  "terminal-colorsaurus 0.4.8",
  "unicode-segmentation",
- "unicode-width 0.1.14",
+ "unicode-width 0.2.2",
  "xdg",
 ]
 
