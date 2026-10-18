@@ -11,6 +11,9 @@ jobs:
         variant:
         - before
         - after
+        mode:
+        - untraced
+        - traced
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -24,7 +27,12 @@ jobs:
       uses: Swatinem/rust-cache@v2
       with:
         key: x86_64-unknown-linux-gnu
+    - name: Build (untraced, timed)
+      if: matrix.mode == 'untraced'
+      shell: bash
+      run: cargo test --target x86_64-unknown-linux-gnu --verbose --no-run
     - uses: LalitMaganti/buildprof@v0.2.8
       with:
-        artifact-name: delta-${{ matrix.variant }}-${{ github.run_attempt }}
+        artifact-name: delta-${{ matrix.variant }}-${{ github.run_attempt }}-${{ matrix.mode }}
         command: cargo test --target x86_64-unknown-linux-gnu --verbose --no-run
+      if: matrix.mode == 'traced'
