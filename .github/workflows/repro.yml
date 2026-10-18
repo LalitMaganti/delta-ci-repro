@@ -13,7 +13,7 @@ jobs:
         - after
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Runner hardware
       run: nproc; free -g | head -2; lscpu | grep -E 'Model name|Thread|Core|Socket'
     - uses: dtolnay/rust-toolchain@stable
