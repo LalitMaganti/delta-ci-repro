@@ -1,0 +1,8 @@
+[book]
+authors = ["Dan Davison"]
+language = "en"
+src = "src"
+title = "delta"
+
+[output.html]
+git-repository-url = "https://github.com/dandavison/delta"
